@@ -1,33 +1,108 @@
+/* styles/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* Custom Buttons */
+  .btn {
+    @apply text-white font-bold py-2 px-4 rounded;
   }
+  .btn-cyan {
+    @apply bg-customCyan hover:bg-customCyanDark;
+  }
+  .btn-orange {
+    @apply bg-customOrange hover:bg-customOrangeDark;
+  }
+  .btn-pink {
+    @apply bg-customPink hover:bg-customPinkDark;
+  }
+  .btn-purple {
+    @apply bg-customPurple hover:bg-customPurpleDark;
+  }
+  .btn-mauve {
+    @apply bg-customMauve hover:bg-customMauveDark;
+  }
+  .btn-red {
+    @apply bg-customRed hover:bg-customRedDark;
+  }
+  .btn-teal {
+    @apply bg-customTeal hover:bg-customTealDark;
+  }
+  .btn-navy {
+    @apply bg-customNavy hover:bg-customNavyDark;
+  }
+  .btn-cream {
+    @apply bg-customCream hover:bg-customCreamDark;
+  }
+  /* Gradient Backgrounds */
+  .bg-gradient-cyan-to-r {
+    @apply bg-gradient-to-r from-customCyan to-customTeal;
+  }
+  .bg-gradient-orange-to-r {
+    @apply bg-gradient-to-r from-customOrange to-customPink;
+  }
+  .bg-gradient-pink-to-r {
+    @apply bg-gradient-to-r from-customPink to-customPurple;
+  }
+  .bg-gradient-purple-to-r {
+    @apply bg-gradient-to-r from-customPurple to-customMauve;
+  }
+  .bg-gradient-mauve-to-r {
+    @apply bg-gradient-to-r from-customMauve to-customRed;
+  }
+  .bg-gradient-red-to-r {
+    @apply bg-gradient-to-r from-customRed to-customTeal;
+  }
+  .bg-gradient-teal-to-r {
+    @apply bg-gradient-to-r from-customTeal to-customNavy;
+  }
+  .bg-gradient-navy-to-r {
+    @apply bg-gradient-to-r from-customNavy to-customCream;
+  }
+  .bg-gradient-cream-to-r {
+    @apply bg-gradient-to-r from-customCream to-customCyan;
+  }
+  /* Headers */
+  .header {
+    @apply text-3xl font-bold;
+  }
+  /* Cards */
+  .card {
+    @apply bg-white shadow-md rounded-lg overflow-hidden;
+  }
+  .card-cyan {
+    @apply border-customCyan;
+  }
+  .card-orange {
+    @apply border-customOrange;
+  }
+  .card-pink {
+    @apply border-customPink;
+  }
+  .card-purple {
+    @apply border-customPurple;
+  }
+  .card-mauve {
+    @apply border-customMauve;
+  }
+  .card-red {
+    @apply border-customRed;
+  }
+  .card-teal {
+    @apply border-customTeal;
+  }
+  .card-navy {
+    @apply border-customNavy;
+  }
+  .card-cream {
+    @apply border-customCream;
+  }
+  
+.table-cell {
+  @apply px-4 py-2 border-r-[1px];
+}
+.table-row {
+  @apply text-customCreamDark hover:bg-gray-800 hover:text-customCyan;
+}
 }
