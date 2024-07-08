@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { InvestorProvider } from "@/components/contexts/InvestorContext"
 
 export const metadata: Metadata = {
   title: "Next Investment",
@@ -17,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <InvestorProvider>
+        <body>{children}</body>
+      </InvestorProvider>
     </html>
   );
 }

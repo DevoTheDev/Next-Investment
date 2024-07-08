@@ -1,24 +1,19 @@
-export interface MonetaryTrend {
-    timeline: string;
-    amount: number;
-    movement: 'positive' | 'negative';
-}
 
 export type Company = {
     companyName: string;
-    abbreviation: string;
+    symbol: string;
+    color?: string;
 };
 
 export interface Investment {
-    label: { title: string, color: string },
+    company: Partial<Company>,
     amount: number,
-    trend: MonetaryTrend[]
 }
 
 export interface User {
     firstName: string,
     lastName: string,
-    money: { amount: number, trends?: MonetaryTrend[]},
+    money: number,
     email: string,
     password: string,
     investments: Partial<Investment>[],

@@ -56,12 +56,12 @@ const StockTable = ({ symbol }: { symbol: string }) => {
       <table className="w-full">
         <thead>
           <tr>
-            <HeaderWithDropDown title="Date" description="The date of the trading session" />
-            <HeaderWithDropDown title="Open" description="The price at which the stock opened" />
-            <HeaderWithDropDown title="High" description="The highest price reached during the trading session" />
-            <HeaderWithDropDown title="Low" description="The lowest price reached during the trading session" />
-            <HeaderWithDropDown title="Close" description="The price at which the stock closed" />
-            <HeaderWithDropDown title="Volume" description="The total number of shares traded" />
+            <HeaderWithDropDown title="Date" description="Date of Session" />
+            <HeaderWithDropDown title="Open" description="Price at Opening" />
+            <HeaderWithDropDown title="High" description="Session Price High" />
+            <HeaderWithDropDown title="Low" description="Session Price Low" />
+            <HeaderWithDropDown title="Close" description="Price at Close" />
+            <HeaderWithDropDown title="Volume" description="Total Shares Traded" />
           </tr>
         </thead>
         <tbody>

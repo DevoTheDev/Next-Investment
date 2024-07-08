@@ -3,37 +3,39 @@ import RootLayout from "./(root)/layout";
 import MoneyPool from "@/components/ui/MoneyPool";
 import "@/constants/types"
 import StockListing from "@/components/ui/StockListing";
-import { User } from "@/constants/types";
+import { Company, User } from "@/constants/types";
+import StockTable from "@/components/ui/table/StockTable";
+import { useInvestorContext } from "@/components/contexts/InvestorContext";
+import StockList from "@/components/ui/StockList";
 type Props = {}
 
 export const ActiveUser: Partial<User> = {
   firstName: "Devon",
   lastName: "Fennell",
-  money: { amount: 231984.32, },
+  money: 231984.32,
   email: "contact@devon.com",
   password: "password",
   investments: [
     { 
-      label: { title: 'AAPL', color: '#B0E0E6' },
+      company: { symbol: 'AAPL', color: '#B0E0E6' },
       amount: 3623.12,
     },
     { 
-      label: { title: 'GOOG', color: '#1E90FF' },
+      company: { symbol: 'GOOG', color: '#1E90FF' },
       amount: 2115.92,
     },
     { 
-      label: { title: 'MCSFT', color: '#89CFF0' },
+      company: { symbol: 'MCSFT', color: '#89CFF0' },
       amount: 2853.42,
     },
     { 
-      label: { title: 'H&M', color: '#4169E1' },
+      company: { symbol: 'H&M', color: '#4169E1' },
       amount: 651.37,
     }
   ]
 }
 
 const Home = (props: Props) => {
-
   return (
     <RootLayout>
       <div className="rounded-lg">
@@ -45,8 +47,10 @@ const Home = (props: Props) => {
         </div>
         <div className="w-full border-[1rem] rounded-xl my-1 bg-gray-600 border-gray-600">
           {/* TODO: Make into a StockList component */}
-          <StockListing stock={{ symbol: 'AAPL', companyName: 'Apple Inc.' }} />
+          <StockList type="portfolio"/>
+          {/* <StockListing stock={{ symbol: 'AAPL', companyName: 'Apple Inc.' }} /> */}
         </div>
+        {/* <StockTable symbol="AAPL" /> */}
     </div>
     </RootLayout>
   )
