@@ -44,17 +44,15 @@ services:
       - backend
 
   react-app:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app
-    environment:
-      - NODE_ENV=development
-    networks:
-      - backend
+  build:
+    context: ./frontend
+    dockerfile: Dockerfile
+  ports:
+    - "3000:3000"
+  environment:
+    - NODE_ENV=development
+  networks:
+    - backend
 
 volumes:
   mongo-data:
