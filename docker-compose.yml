@@ -1,0 +1,65 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - backend
+
+  next-investment-api:
+    build:
+      context: ./next-investment-api
+      dockerfile: Dockerfile
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./next-investment-api:/app
+    environment:
+      - FLASK_ENV=development
+      - MONGO_URI=mongodb://mongodb:27017/next-investment
+    depends_on:
+      - mongodb
+    networks:
+      - backend
+
+  alpha-vantage-api:
+    build:
+      context: ./alpha-vantage-api
+      dockerfile: Dockerfile
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./alpha-vantage-api:/app
+    environment:
+      - FLASK_ENV=development
+      - MONGO_URI=mongodb://mongodb:27017/next-investment
+      - ALPHA_VANTAGE_API_KEY=VCTCSUSIBW95DBCJ
+      - ALPHA_VANTAGE_BASE_URL=https://www.alphavantage.co/query  
+    depends_on:
+      - mongodb
+    networks:
+      - backend
+
+  react-app:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+    networks:
+      - backend
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  backend:
+    driver: bridge
