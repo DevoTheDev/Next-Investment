@@ -1,7 +1,6 @@
 from flask import Flask, Blueprint, request, jsonify
 from flask_cors import CORS
 from custom_logging.custom_log import custom_log
-import requests
 import os
 from dotenv import load_dotenv
 from db import db

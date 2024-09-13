@@ -7,7 +7,7 @@ const Login = ({
   
 }: LoginProps) => {
   return (
-    <div className='bg-gray-600 p-12 h-lvh flex justify-center'>
+    <div className="bg-gray-600 h-lvh px-12 flex justify-center">
     <AuthComponent type='login' values={{ buttonText: "Log In", title: "Sign In to Your Account" }} />
     </div>
   )

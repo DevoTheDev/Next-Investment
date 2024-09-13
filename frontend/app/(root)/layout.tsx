@@ -10,18 +10,18 @@ type Props = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
-    <section className="min-h-screen relative flex flex-col">
+    <section className="h-lvh relative flex flex-col">
       <AppHeader />
       <div className="md:flex hidden">
         <Navigation />
       </div>
-      <main className="flex-grow">
+      <main className="flex-1">
         {children}
       </main>
       <div className="md:hidden flex">
         <Navigation />
       </div>
-      <footer className="md:flex hidden bg-gray-800 text-white p-4 text-center">
+      <footer className="md:flex hidden bg-gray-900 text-white p-4 text-center">
         <p>&copy; 2024 Next Investment</p>
       </footer>
     </section>

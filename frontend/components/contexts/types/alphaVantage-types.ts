@@ -43,10 +43,22 @@ type Topics =
 "manufacturing" |
 "real_estate" |
 "retail_wholesale" |
-"technology" |
-"" |
-"" |
-"" |
-"" |
-"" |
-""
+"technology"
+
+type Thang = {
+    [key:string]: any
+}
+export interface MarketStatusListing extends Thang {
+    current_status: string
+    local_close: string
+    local_open: string
+    market_type: string
+    notes: string,
+    primary_exchanges: string
+    region: string
+}
+
+export interface MarketStatusResponse {
+    endpoint: string,
+    markets: MarketStatusListing[],
+}

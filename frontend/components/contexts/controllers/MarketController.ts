@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { BASE_URL } from './AuthController';
+
+const MARKET_URL = "http://127.0.0.1:6006"
 
 const getQuote = async (token: string, symbol: string, datatype: string = 'json'): Promise<any> => {
-    const response = await axios.get(`${BASE_URL}/market/quote`, {
+    const response = await axios.get(`${MARKET_URL}/market/quote`, {
         params: { symbol, datatype },
         headers: {
             Authorization: `Bearer ${token}`,
@@ -12,7 +13,7 @@ const getQuote = async (token: string, symbol: string, datatype: string = 'json'
 };
 
 const searchSymbols = async (token: string, keywords: string, datatype: string = 'json'): Promise<any> => {
-    const response = await axios.get(`${BASE_URL}/market/search`, {
+    const response = await axios.get(`${MARKET_URL}/market/search`, {
         params: { keywords, datatype },
         headers: {
             Authorization: `Bearer ${token}`,
@@ -22,7 +23,7 @@ const searchSymbols = async (token: string, keywords: string, datatype: string =
 };
 
 const getMarketStatus = async (token: string): Promise<any> => {
-    const response = await axios.get(`${BASE_URL}/market/market_status`, {
+    const response = await axios.get(`${MARKET_URL}/market/market_status`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -31,7 +32,7 @@ const getMarketStatus = async (token: string): Promise<any> => {
 };
 
 const getHistoricalOptions = async (token: string, symbol: string, date: string, datatype: string = 'json'): Promise<any> => {
-    const response = await axios.get(`${BASE_URL}/market/historical_options`, {
+    const response = await axios.get(`${MARKET_URL}/market/historical_options`, {
         params: { symbol, date, datatype },
         headers: {
             Authorization: `Bearer ${token}`,
@@ -41,7 +42,7 @@ const getHistoricalOptions = async (token: string, symbol: string, date: string,
 };
 
 const getNewsSentiment = async (token: string, tickers: string, topics: string, timeFrom: string, timeTo: string, sort: string = 'LATEST', limit: number = 50, datatype: string = 'json'): Promise<any> => {
-    const response = await axios.get(`${BASE_URL}/market/news_sentiment`, {
+    const response = await axios.get(`${MARKET_URL}/market/news_sentiment`, {
         params: { tickers, topics, time_from: timeFrom, time_to: timeTo, sort, limit, datatype },
         headers: {
             Authorization: `Bearer ${token}`,
@@ -51,7 +52,7 @@ const getNewsSentiment = async (token: string, tickers: string, topics: string, 
 };
 
 const getTopGainersLosers = async (token: string): Promise<any> => {
-    const response = await axios.get(`${BASE_URL}/market/top_gainers_losers`, {
+    const response = await axios.get(`${MARKET_URL}/market/top_gainers_losers`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -60,7 +61,7 @@ const getTopGainersLosers = async (token: string): Promise<any> => {
 };
 
 const getIpoCalendar = async (token: string): Promise<any> => {
-    const response = await axios.get(`${BASE_URL}/market/ipo_calendar`, {
+    const response = await axios.get(`${MARKET_URL}/market/ipo_calendar`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -69,7 +70,7 @@ const getIpoCalendar = async (token: string): Promise<any> => {
 };
 
 const getListingStatus = async (token: string, date: string, state: string = 'active'): Promise<any> => {
-    const response = await axios.get(`${BASE_URL}/market/listing_status`, {
+    const response = await axios.get(`${MARKET_URL}/market/listing_status`, {
         params: { date, state },
         headers: {
             Authorization: `Bearer ${token}`,

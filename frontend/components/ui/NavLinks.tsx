@@ -13,7 +13,7 @@ interface NavItem {
 
 export const navigationValues: NavItem[] = [
     {
-        route: "/",
+        route: "/home",
         imgUrl: "./home.svg",
         title: "Home",
     },

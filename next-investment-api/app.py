@@ -24,8 +24,8 @@ def test_connection():
     except Exception as e:
         return {"status": "fail", "message": str(e)}, 500
 
-app.register_blueprint(investments_bp)
-app.register_blueprint(auth_bp)
+app.register_blueprint(investments_bp, url_prefix='/investments')
+app.register_blueprint(auth_bp, url_prefix='/auth')
 
 class CustomJSONEncoder(JSONEncoder):
     def default(self, obj):
@@ -35,4 +35,4 @@ class CustomJSONEncoder(JSONEncoder):
     
 if __name__ == '__main__':
     custom_log("SUCCESS", f"Next Investment Server running on port {port}.")
-    app.run(port=port, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=True)

@@ -3,6 +3,7 @@ import "./globals.css";
 import { InvestorProvider } from '@/components/contexts/InvestorContext';
 import { AuthProvider } from '@/components/contexts/AuthContext';
 import { MarketProvider } from "@/components/contexts/MarketContext";
+import { SelectionProvider } from "@/components/contexts/SelectionContext";
 
 export const metadata: Metadata = {
   title: "Next Investment",
@@ -19,13 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <AuthProvider>
-        <MarketProvider>
-          <InvestorProvider>
-            <body className="bg-gray-950 relative flex-1">{children}</body>
-          </InvestorProvider>
-        </MarketProvider>
-      </AuthProvider>
+      <SelectionProvider>
+        <AuthProvider>
+          <MarketProvider>
+            <InvestorProvider>
+              <body className="h-lvh bg-gray-900">{children}</body>
+            </InvestorProvider>
+          </MarketProvider>
+        </AuthProvider>
+      </SelectionProvider>
     </html>
   );
 }

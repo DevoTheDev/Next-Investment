@@ -1,28 +1,33 @@
+"use client";
 import React from 'react'
+import Listing, { ListingProps } from './Listing'
+import { useSelection } from '../contexts/SelectionContext';
 
-type DialogProps = {
-    children: any
-}
+type DialogProps<T extends object> = ListingProps<T>;
 
-const StyleOptions = {
-    darkBackGround : "fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80",
-    defaultSizeAdjust: "sm:w-1/2 md:1/3 lg:w-1/3",
-    fullSize: "w-full h-full",
-    fullWidth: "w-full",
-    fullHeight: "h-full",
-    fitToChild: "w-max h-max"
+const Dialog = <T extends object>(
+  { data }: DialogProps<T>
+) => {
+  const { setSelectedItem } = useSelection();
 
-}
-
-const Dialog = (
-    { children }: DialogProps
-    ) => {
+  const handleDialogClose = () => {
+    setSelectedItem(undefined);
+  }
   return (
-    <div className={StyleOptions.darkBackGround}>
-    <div className={`relative ${StyleOptions.fitToChild} bg-red-400 rounded-lg p-5`}>
-       {children}
-    </div>
-</div>
+    <section className={`fixed bg-black bg-opacity-70 h-full w-full z-10 flex flex-col ov justify-center items-center top-0 `}>
+      <div
+        className={`
+        w-max text-end px-4 bg-red-400
+        mb-2
+        hover:bg-red-500 hover:text-white font-bold 
+        text-[2rem] cursor-pointer rounded-xl
+        `}
+        onClick={handleDialogClose}>X</div>
+      <Listing
+        data={data}
+        
+      />
+    </section>
   )
 }
 

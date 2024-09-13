@@ -9,7 +9,7 @@ const Register = ({
 
 }: RegisterProps) => {
   return (
-    <div className='bg-gray-600 p-12 h-lvh flex justify-center'>
+    <div className='bg-gray-600 px-12 h-lvh flex justify-center'>
     <AuthComponent type='register' values={{ buttonText: "Sign Up", title: "Sign Up for a New Account" }} />
     </div>
   )

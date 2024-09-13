@@ -1,26 +1,27 @@
-export interface StylesSuite {
-    container: string,
-    itemContainer: string,
-    key: string,
-    value: string
-}
-export interface ImageSuite {
-    imgUrl: string,
-    dimensions: { h: number, w: number },
-    alt: string,
-}
-
 export type Detail = {
     [key: string]: any;
 }
 
-export type DetailStyle = {
-    key: string,
-    value: string,
-    kv_container: string,
-    container: string,
-}
+// Interfaces for styling and interaction
+export interface Stylable {
+    style?: React.CSSProperties;
+    tailwindClass?: string;
+  }
+  
+  export interface Interactable {
+    onTouchStart?: (props?: any) => any;
+    onTouchEnd?: (props?: any) => any;
+    onClick?: (props?: any) => any;
+  }
+  
+  export interface BasicConfig {
+    container?: Stylable & Interactable;
+    keyValueContainer?: Stylable & Interactable;
+    keyRef?: Stylable & Interactable;
+    value?: Stylable & Interactable;
+  }
 
-export type Checklist<T extends Detail, CheckLabel extends string> = {
-    [K in keyof T as `${CheckLabel}${K extends string ? Capitalize<K> : never}`]: boolean
-}
+export type MappedDetails<T extends object, Prefix extends string, ConfigType> = {
+    [K in keyof T as `${Prefix}${Capitalize<string & K>}`]?: ConfigType;
+};
+

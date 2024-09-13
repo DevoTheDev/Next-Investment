@@ -131,7 +131,7 @@ def get_ipo_calendar():
 @market_bp.route('/listing_status', methods=['GET'])
 def get_listing_status():
     date = request.args.get('date')
-    state = request.args.get('state', 'active')  # Default to active
+    state = request.args.get('state', 'active')
     params = build_market_params(
         function='LISTING_STATUS',
         date=date,
@@ -140,4 +140,3 @@ def get_listing_status():
 
     response = requests.get(ALPHA_VANTAGE_BASE_URL, params=params)
     return jsonify(response.json()), response.status_code
-

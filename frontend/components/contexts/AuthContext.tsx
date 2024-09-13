@@ -34,7 +34,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const { token } = await loginUser(username, password);
       setToken(token);
       if(token) {
-        router.push("/")
+        router.push("/home")
       }
       console.log('Login successful, token:', token);
     } catch (error) {

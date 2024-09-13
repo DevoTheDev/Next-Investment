@@ -12,7 +12,7 @@ const Settings = () => {
     <section className='flex m-6 flex-col flex-1 items-center bg-gray-800' >
       <h1 className="text-customCyan text-[2.5rem] m-4 font-bold">Your Account</h1>
 
-      <div className="bg-gray-600 grid grid-cols-2 gap-12 p-6 items-center w-1/3 justify-center">
+      <div className="bg-gray-600 grid grid-cols-2 gap-12 p-6 items-center md:w-1/2 sm:w-full justify-center">
         {
           diffSettings.map((setting) => {
             return (

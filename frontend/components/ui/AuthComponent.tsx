@@ -1,7 +1,6 @@
 "use client"
 import React from 'react'
 import { useAuthContext } from '../contexts/AuthContext'
-import { capitalizeKey } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 
 type AuthComponentProps = {
@@ -24,13 +23,10 @@ type AuthComponentProps = {
 
 const defaultConfig: Omit<AuthComponentProps, "type"> = {
     styles: {
-        container: `flex flex-col justify-around items-center bg-gray-800 h-full rounded-xl w-1/3 shadow-xl`,
-        title: `text-[2rem] text-customCyan bg-gray-900 px-12 py-6 rounded-xl font-bold mt-8`,
-        inputsContainer: `flex flex-col items-center`,
-        inputs: ` text-[1.5rem] p-2 m-2 bg-black rounded-xl text-customCyan flex text-center`,
-        button: `bg-gray-900 text-[1.5rem] px-12 py-2 
-        text-white rounded-xl
-        hover:bg-black hover:text-customCyan`
+        container: `flex flex-col justify-evenly w-3/4 bg-gray-700`,
+        title: `text-center text-customCyan bg-gray-800 w-1/2 text-2xl self-center rounded-xl p-2`,
+        inputs: `text-center self-center bg-black text-white w-1/3 p-4 rounded-xl text-lg`,
+        button: `text-center self-center bg-gray-900 hover:bg-customCyan text-customCyan hover:text-gray-900 w-1/4 p-4 rounded-full cursor-pointer text-xl font-bold`
     },
     values: {
         unPlaceholder: `Enter Username`,
@@ -70,44 +66,40 @@ const AuthComponent = ({
         router.push("/auth/register");
     }
     const handleAsGuest = () => {
-        router.push("/");
+        router.push("/home");
     }
 
     return (
         <div
             className={styles?.container || defaultConfig.styles?.container}
         >
-            <h1
+            <div
                 className={styles?.title || defaultConfig.styles?.title}
-            >{values?.title || capitalizeKey(type)}</h1>
-            <hr className='border-gray-600 w-2/3'></hr>
-            <div className={styles?.inputsContainer || defaultConfig.styles?.inputsContainer}>
-                <input
-                    onChange={handleUsername}
-                    placeholder={values?.unPlaceholder || defaultConfig.values?.unPlaceholder}
-                    className={styles?.inputs || defaultConfig.styles?.inputs}
-                />
-                <input
-                    onChange={handlePassword}
-                    placeholder={values?.pwPlaceholder || defaultConfig.values?.pwPlaceholder}
-                    className={styles?.inputs || defaultConfig.styles?.inputs}
-                />
-            </div>
+            >{values?.title}</div>
+            <input
+                onChange={handleUsername}
+                placeholder={values?.unPlaceholder || defaultConfig.values?.unPlaceholder}
+                className={styles?.inputs || defaultConfig.styles?.inputs}
+            />
+            <input
+                onChange={handlePassword}
+                placeholder={values?.pwPlaceholder || defaultConfig.values?.pwPlaceholder}
+                className={styles?.inputs || defaultConfig.styles?.inputs}
+            />
             <button
                 className={styles?.button || defaultConfig.styles?.button}
                 onClick={handleSubmit}>{values?.buttonText || defaultConfig.values?.buttonText}
             </button>
-            <hr className='border-gray-600 w-2/3' ></hr>
             {(type == 'login') && (
-                <button
-                    className='text-white bg-gray-700 hover:bg-gray-500 rounded-2xl text-xl py-2 px-8'
+                <div
+                    className={styles?.button || defaultConfig.styles?.button}
                     onClick={handleNewAccount}
-                >Create a New Account</button>
+                >Create a New Account</div>
             )}
-            <button
-                className={`text-customCyan hover:bg-gray-500 rounded-2xl text-xl py-2 px-8`}
+            <div
+                className={styles?.button || defaultConfig.styles?.button}
                 onClick={handleAsGuest}
-            >Continue As Guest</button>
+            >Continue As Guest</div>
         </div>
     )
 }

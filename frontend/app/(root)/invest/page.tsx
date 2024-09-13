@@ -1,7 +1,13 @@
-import InvestmentComponent from '@/components/ui/InvestmentComponent';
-import { top30_default } from '@/constants';
+"use client"
+import InformationComponent from '@/components/ui/Listing';
+import { Stock, top30_default } from '@/constants';
 import * as React from 'react';
 import { useMarketContext } from '@/components/contexts/MarketContext';
+import StockList from '@/components/ui/StockList';
+import { NewsSentimentsList } from '@/components/ui/NewsSentiments';
+import MarketStatuses from '@/components/ui/MarketStatuses';
+import { useSelection } from '@/components/contexts/SelectionContext';
+import Dialog from '@/components/ui/Dialog';
 
 const Invest = () => {
 
@@ -18,34 +24,36 @@ const Invest = () => {
           TODO: Implement News Sentiments, Analytics Options, and filtration
                 via data prvoded by Alpha Vantage 
   */
-  
+
+  const { selectedItem } = useSelection();
+
   return (
-    <section className='bg-gray-900 flex flex-col items-center gap-4 p-4'>
-      <h1 className='text-white text-2xl font-bold'>The Market</h1>
-      <table className='min-w-full bg-gray-800 border border-gray-700'>
-        <thead>
-          <tr className='bg-gray-700'>
-            <th className='text-left text-white px-4 py-2'>Company</th>
-            <th className='text-left text-white px-4 py-2'>Ticker</th>
-            <th className='text-left text-white px-4 py-2'>Market Cap</th>
-            <th className='text-left text-white px-4 py-2'>Stock Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {top30_default.map((stock, index) => (
-            <tr
-              key={index}
-              className='hover:bg-gray-700 text-white hover:text-customCyan'
-            >
-              <td className='px-4 py-2'>{stock.company}</td>
-              <td className='px-4 py-2'>{stock.ticker}</td>
-              <td className='px-4 py-2'>{stock.marketCap}</td>
-              <td className='px-4 py-2'>{stock.stockPrice}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </section>
+    <>
+      {selectedItem ? (<Dialog data={selectedItem} />) : null}
+      <section className='flex flex-col'>
+        <h1 className='text-customCyan text-center text-[3rem] p-4 font-bold bg-black'>Invest in the Stock Market</h1>
+        <div className='flex gap-8'>
+          <span className='flex flex-col items-center w-[33%] '>
+            <h1
+              className='p-4 text-customCyan bg-gray-800 w-full text-center'
+            >The Sentiments</h1>
+            <NewsSentimentsList />
+          </span>
+          <span className='flex flex-col items-center w-[66%]'>
+            <h1
+              className='p-4 text-customCyan bg-gray-800 w-full text-center'
+            >The Stocks</h1>
+            <StockList />
+          </span>
+          <span className='flex flex-col items-center w-[33%]'>
+            <h1
+              className='p-4 text-customCyan bg-gray-800 w-full text-center'
+            >The Markets</h1>
+            <MarketStatuses />
+          </span>
+        </div>
+      </section>
+    </>
   );
 };
 
