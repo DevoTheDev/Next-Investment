@@ -5,6 +5,10 @@
 
                 ~   docker compose up --build
 
+# To Log In:
+    username: u
+    password: p
+
 # Exceptions:
 
 #   venv may be required..
