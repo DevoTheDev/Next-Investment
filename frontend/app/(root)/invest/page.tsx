@@ -31,7 +31,7 @@ const Invest = () => {
     <>
       {selectedItem ? (<Dialog data={selectedItem} />) : null}
       <section className='flex flex-col'>
-        <h1 className='text-customCyan text-center text-[3rem] p-4 font-bold bg-black'>Invest in the Stock Market</h1>
+        <h1 className='text-customCyan text-start text-[2rem] py-4 pl-6 font-thin bg-black'>Invest</h1>
         <div className='flex gap-8'>
           <span className='flex flex-col items-center w-[33%] '>
             <h1

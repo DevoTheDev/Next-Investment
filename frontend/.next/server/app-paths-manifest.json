@@ -1,7 +1,8 @@
 {
   "/auth/login/page": "app/auth/login/page.js",
+  "/auth/register/page": "app/auth/register/page.js",
+  "/(root)/settings/page": "app/(root)/settings/page.js",
   "/(root)/invest/page": "app/(root)/invest/page.js",
-  "/(root)/home/page": "app/(root)/home/page.js",
   "/(root)/portfolio/page": "app/(root)/portfolio/page.js",
-  "/(root)/settings/page": "app/(root)/settings/page.js"
+  "/(root)/home/page": "app/(root)/home/page.js"
 }

@@ -26,20 +26,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(root)/layout.js"
     ],
+    "/auth/register/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/auth/register/page.js"
+    ],
     "/(root)/invest/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(root)/invest/page.js"
     ],
-    "/(root)/settings/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(root)/settings/page.js"
-    ],
     "/(root)/portfolio/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(root)/portfolio/page.js"
+    ],
+    "/(root)/settings/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(root)/settings/page.js"
     ]
   }
 }

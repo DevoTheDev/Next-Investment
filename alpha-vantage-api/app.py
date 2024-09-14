@@ -25,8 +25,8 @@ def test_connection():
     except Exception as e:
         return {"status": "fail", "message": str(e)}, 500
 
-app.register_blueprint(time_series_bp, url_prefix='/time_series')
 app.register_blueprint(market_bp, url_prefix='/market')
+app.register_blueprint(time_series_bp, url_prefix='/time_series')
 app.register_blueprint(analytics_bp, url_prefix='/analytics')
 
 

@@ -41,6 +41,7 @@ def get_quote():
     response = requests.get(ALPHA_VANTAGE_BASE_URL, params=params)
     return jsonify(response.json()), response.status_code
 
+# Should be used with 'Deep Analytics' option on Investment wizard.
 @market_bp.route('/search', methods=['GET'])
 def search_symbols():
     keywords = request.args.get('keywords')

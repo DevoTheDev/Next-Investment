@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const BASE_URL = process.env.NEXT_INVESTMENT_API_BASE_URL || 'http://127.0.0.1:5005';
+export const BASE_URL = process.env.NEXT_INVESTMENT_API_BASE_URL || 'http://localhost:5005';
 
 export const authController = () => {
   const registerUser = async (username: string, password: string): Promise<any> => {
